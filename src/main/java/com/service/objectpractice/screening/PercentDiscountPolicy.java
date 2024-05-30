@@ -1,6 +1,6 @@
 package com.service.objectpractice.screening;
 
-public class PercentDiscountPolicy extends DiscountPolicy {
+public class PercentDiscountPolicy extends DefaultDiscountPolicy {
 
     protected double percent;
 
