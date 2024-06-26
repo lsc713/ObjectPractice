@@ -53,7 +53,7 @@ public class Screening {
                 return movie.calculateNoneDiscountedFee().times(audienceCount);
 
         }
-        return movie.calculateNoneDiscountedFee().times(audienceCount);;
+        return movie.calculateNoneDiscountedFee().times(audienceCount);
     }
     public LocalDateTime getStartTime() {
         return whenScreened;
@@ -71,8 +71,8 @@ public class Screening {
         return new Reservation(customer, this, calculateFee(audienceCount), audienceCount);
     }
 
-    private Money calculateFee(int audienceCount) {
-        return movie.calculateMovieFee(this).times(audienceCount);
-    }
+//    private Money calculateFee(int audienceCount) {
+//        return movie.calculateMovieFee(this).times(audienceCount);
+//    }
 
 }

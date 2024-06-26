@@ -121,15 +121,15 @@ public class Movie {
         private int sequence;
 
         private DayOfWeek dayOfWeek;
-        private LocalTime startTime;
+        private LocalDateTime startTime;
 
-        private LocalTime endTime;
+        private LocalDateTime endTime;
 
         public DiscountConditionType getType() {
             return type;
         }
 
-        public boolean isDiscountable(DayOfWeek dayOfWeek, LocalTime time) {
+        public boolean isDiscountable(DayOfWeek dayOfWeek, LocalDateTime time) {
             if (type != DiscountConditionType.PERIOD) {
                 throw new IllegalArgumentException();
             }
@@ -187,7 +187,7 @@ public class Movie {
         for (DiscountCondition discountCondition : discountConditions) {
             if (discountCondition.getType() == DiscountConditionType.PERIOD) {
                 if (discountCondition.isDiscountable(whenScreened.getDayOfWeek(),
-                    whenScreened.toLocalTime())) {
+                    LocalDateTime.from(whenScreened.toLocalTime()))) {
                     return true;
                 } else {
                     if (discountCondition.isDiscountable(sequence)) {
