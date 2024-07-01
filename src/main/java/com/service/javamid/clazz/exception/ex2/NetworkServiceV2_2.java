@@ -1,0 +1,26 @@
+package com.service.javamid.clazz.exception.ex2;
+
+public class NetworkServiceV2_2 {
+
+    public void sendMessage(String data) {
+        String address = "http://localhost:8080";
+        NetworkClientV2 client = new NetworkClientV2(address);
+        client.initError(data);
+
+        try {
+            client.connect();
+        } catch (NetworkClientExceptionV3 e) {
+            System.out.println(e.getErrorCode() + "error" + e.getErrorCode());
+            return;
+        }
+
+        try {
+            client.send(data);
+        } catch (NetworkClientExceptionV3 e) {
+            System.out.println(e.getErrorCode() + "error" + e.getErrorCode());
+            return;
+        }
+        client.disconnect();
+    }
+
+}
