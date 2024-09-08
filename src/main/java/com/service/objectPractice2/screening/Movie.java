@@ -40,4 +40,16 @@ public abstract class Movie {
     }
 
     abstract protected Money calculateDiscountAmount();
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Duration getRunningTime() {
+        return runningTime;
+    }
+
+    public List<DiscountCondition> getDiscountConditions() {
+        return discountConditions;
+    }
 }
