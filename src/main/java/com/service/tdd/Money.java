@@ -2,22 +2,26 @@ package com.service.tdd;
 
 import java.util.Objects;
 
-public class Money {
+public class Money implements Expression{
 
     protected int amount;
     protected String currency;
 
-    Money times(int multiplier){
-        return new Money(amount*multiplier,currency);
+    Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
     }
 
     String currency(){
         return currency;
     }
 
-    Money(int amount, String currency) {
-        this.amount = amount;
-        this.currency = currency;
+    Money times(int multiplier){
+        return new Money(amount*multiplier,currency);
+    }
+
+    public Expression plus(Money addend) {
+        return new Sum(this,addend);
     }
 
     static Money dollar(int amount) {
@@ -41,5 +45,10 @@ public class Money {
 
     public String toString(){
         return amount + " " + currency;
+    }
+
+    public Money reduce(Bank bank, String to) {
+        int rate = bank.rate(currency, to);
+        return new Money(amount / rate, to);
     }
 }
